@@ -15,4 +15,4 @@ let resCube = res ** 3;
 
 console.log(resCube);
 
-console.log(resCube.toString().substr(0, 2));
+alert(resCube.toString().substr(0, 2));
