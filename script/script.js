@@ -6,22 +6,26 @@ let str = prompt('Введите любые буквы...');
 
 
 
-function chekString(str) {
-  if (!Number.isNaN(str)) {
-    console.log('Аргумент не строка!');
-    str = +str;
-  } else {
-    str = str.trim();
+function chekString(str, countChar) {
+  if (isNaN(str)) {    
+    countChar(str);    
+  } else {console.log('Аргумент не строка!');}  
   }
 
-  if (+str.length > 30) {
-    console.log(str.substring(0, 30) + '...');
+
+  function countChar(str) {
+    str = str.trim();
+    if (+str.length > 30) {
+      console.log(str.substring(0, 30) + '...');
   } else {
     console.log(typeof(str), str);
   }
+
 }
 
-chekString(str);
+
+
+chekString(str, countChar);
 
 
 
