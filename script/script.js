@@ -1,46 +1,50 @@
 'use strict';
+const week = ['Sunday', 'Monday',	'Tuesday', 'Wednes­day', 'Thursday', 'Friday', 'Saturday'],
+      days = document.querySelector('.days'),
+      daysNewString = document.querySelector('.days-new-string'),
+      weekend = document.querySelector('.weekend'),
+      weekendDay = document.querySelector('.weekend-day'),
+      thisDay = document.querySelector('.this-day');
 
-//Задание 1
+let joinArray = function () {
+  days.textContent = week;
+  daysNewString.innerHTML = week.join('<br>');
 
-let arr = ['123345', '23456', '543456', '46732', '56745', '546754', '34563'];
+  for (let i = 0; i < week.length; i++) {
+    let elem = (week[i] + ', ');
 
-let getArr = function (arr) {
-
-  for (let i = 0; i < arr.length; i++){
-
-    if (arr[i].charAt(0) === '2' || arr[i].charAt(0) === '4') {
-    console.log(arr[i]);
-  } 
-}
-};
-
-getArr(arr);
-
-
-
-//Задание 2
-
-let getPrime = function (n) {
-
-  
-nextNum:  for (let i = 2; i <= n; i++) {
-
-    for (let j = 2; j < i; j++){
-
-      if ( i % j === 0) {
-        continue nextNum;
-      }
-    } 
+    if ( i > 5 || i < 1) {
+      elem = elem.italics();
+    }
     
-    console.log(i + ' простое число, делители этого числа 1 и ' + i);        
-      
+    let item = document.createElement('span');
+
+    item.innerHTML = elem;
+
+    weekendDay.append(item);   
+
   }
-};
+  let date = new Date();  
+
+  for (let i = 0; i < week.length; i++) {    
+
+    let elem = (week[i] + ', ');
+
+
+    if ( i === date.getUTCDay()) {
+      elem = elem.bold();
+    }
+    
+    let item = document.createElement('span');
+
+    item.innerHTML = elem;
+
+    thisDay.append(item);
+
+  }
   
-getPrime(100);
+};
 
-
-
-
+joinArray();
 
 
